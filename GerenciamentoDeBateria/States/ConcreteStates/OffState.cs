@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GerenciamentoDeBateria.States;
 
-namespace GerenciamentoDeBateria
+namespace GerenciamentoDeBateria.States.ConcreteStates
 {
     internal class OffState : State
     {
@@ -12,21 +13,21 @@ namespace GerenciamentoDeBateria
         {
             if (battery > 100)
                 battery = 100;
-            this._battery = battery;
+            _battery = battery;
         }
 
         public override void ClickOnOffButton()
         {
             ColoredText("\t[ DESLIGADO ]\n");
             Console.WriteLine("Vou ligar...");
-            this._notebook.TransitionTo(new OnState(this._battery));
+            _notebook.TransitionTo(new OnState(_battery));
         }
 
         public override void PutCharger()
         {
             ColoredText("\t[ DESLIGADO ]\n");
             Console.WriteLine("Vou carregar...");
-            this._notebook.TransitionTo(new ChargingState(this._battery));
+            _notebook.TransitionTo(new ChargingState(_battery));
         }
 
         public override void RemoveCharger()
@@ -39,7 +40,7 @@ namespace GerenciamentoDeBateria
         public override void CheckBattery()
         {
             ColoredText("\t[ DESLIGADO ]\n");
-            Console.WriteLine($"Porcentagem de bateria: {this._battery}%");
+            Console.WriteLine($"Porcentagem de bateria: {_battery}%");
             return;
         }
 

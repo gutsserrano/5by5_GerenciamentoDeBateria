@@ -1,4 +1,7 @@
-﻿namespace GerenciamentoDeBateria
+﻿using GerenciamentoDeBateria.Context;
+using GerenciamentoDeBateria.States.ConcreteStates;
+
+namespace GerenciamentoDeBateria
 {
     internal class Program
     {
@@ -20,16 +23,16 @@
                 Console.WriteLine(">>>>>Estado da Bateria do Notebook<<<<<\n");
                 switch (key)
                 {
-                    case ConsoleKey.A:
+                    case ConsoleKey.D1:
                         notebook.ClickOnOffButton();
                         break;
-                    case ConsoleKey.D:
+                    case ConsoleKey.D2:
                         notebook.PutCharger();
                         break;
-                    case ConsoleKey.G:
+                    case ConsoleKey.D3:
                         notebook.RemoveCharger();
                         break;
-                    case ConsoleKey.J:
+                    case ConsoleKey.D4:
                         notebook.CheckBattery();
                         break;
                     default:
@@ -39,15 +42,16 @@
 
                 Console.WriteLine("\n>>>>>Opções<<<<<");
 
-                Console.WriteLine("A - Clicar botão ON/OFF");
-                Console.WriteLine("D - Colocar carregador");
-                Console.WriteLine("G - Remover carregador");
-                Console.WriteLine("J - Checar bateria");
-                Console.WriteLine("ESC - Sair");
+                Console.WriteLine("1 - Clicar botão ON/OFF");
+                Console.WriteLine("2 - Colocar carregador");
+                Console.WriteLine("3 - Remover carregador");
+                Console.WriteLine("4 - Checar bateria");
+                Console.WriteLine("0 - Sair");
+                Console.WriteLine("Any key - REFRESH");
 
                 key = Console.ReadKey(true).Key;
 
-            } while(key != ConsoleKey.Escape);
+            } while(key != ConsoleKey.D0);
         }
     }
 }

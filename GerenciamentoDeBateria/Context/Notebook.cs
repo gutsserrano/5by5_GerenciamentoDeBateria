@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GerenciamentoDeBateria.States;
 
-namespace GerenciamentoDeBateria
+namespace GerenciamentoDeBateria.Context
 {
     internal class Notebook
     {
@@ -12,39 +13,39 @@ namespace GerenciamentoDeBateria
 
         public Notebook(State state)
         {
-            this.TransitionTo(state);
+            TransitionTo(state);
         }
 
         public void TransitionTo(State state)
         {
             Console.WriteLine($"Alterando estado para: [ {state.GetType().Name.ToUpper()} ]");
-            this._state = state;
-            this._state.SetContext(this);
+            _state = state;
+            _state.SetContext(this);
         }
 
-        public  void ClickOnOffButton()
+        public void ClickOnOffButton()
         {
-            this._state.ClickOnOffButton();
+            _state.ClickOnOffButton();
         }
 
-        public  void PutCharger()
+        public void PutCharger()
         {
-            this._state.PutCharger();
+            _state.PutCharger();
         }
 
-        public  void RemoveCharger()
+        public void RemoveCharger()
         {
-            this._state.RemoveCharger();
+            _state.RemoveCharger();
         }
 
         public void CheckBattery()
         {
-            this._state.CheckBattery();
+            _state.CheckBattery();
         }
 
         public void PrintStateName()
         {
-            this._state.PrintStateName();
+            _state.PrintStateName();
         }
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GerenciamentoDeBateria.Context;
 
-namespace GerenciamentoDeBateria
+namespace GerenciamentoDeBateria.States
 {
     internal abstract class State
     {
@@ -18,7 +19,7 @@ namespace GerenciamentoDeBateria
 
         public void SetContext(Notebook notebook)
         {
-            this._notebook = notebook;
+            _notebook = notebook;
         }
 
         public abstract void ClickOnOffButton();

@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GerenciamentoDeBateria.States;
 
-namespace GerenciamentoDeBateria
+namespace GerenciamentoDeBateria.States.ConcreteStates
 {
     internal class OnState : State
     {
         public OnState(int battery)
         {
-            this._battery = battery;
+            _battery = battery;
         }
 
         public override void ClickOnOffButton()
         {
             ColoredText("\t[ LIGADO ]\n");
             Console.WriteLine("Vou desligar...");
-            this._notebook.TransitionTo(new OffState(this._battery));
+            _notebook.TransitionTo(new OffState(_battery));
         }
 
         public override void PutCharger()
         {
             ColoredText("\t[ LIGADO ]\n");
             Console.WriteLine("Vou carregar...");
-            this._notebook.TransitionTo(new ChargingState(this._battery));
+            _notebook.TransitionTo(new ChargingState(_battery));
         }
 
         public override void RemoveCharger()
@@ -36,14 +37,14 @@ namespace GerenciamentoDeBateria
 
         public override void CheckBattery()
         {
-            this._battery -= 25;
-            if (this._battery < 0) this._battery = 0;
+            _battery -= 25;
+            if (_battery < 0) _battery = 0;
 
             ColoredText("\t[ LIGADO ]\n");
-            Console.WriteLine($"porcentagem de Bateria: {this._battery}%");
-            if (this._battery == 0)
+            Console.WriteLine($"porcentagem de Bateria: {_battery}%");
+            if (_battery == 0)
             {
-                this._notebook.TransitionTo(new NoBatteryState());
+                _notebook.TransitionTo(new NoBatteryState());
             }
         }
 

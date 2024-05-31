@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GerenciamentoDeBateria.States;
 
-namespace GerenciamentoDeBateria
+namespace GerenciamentoDeBateria.States.ConcreteStates
 {
     internal class NoBatteryState : State
     {
         public NoBatteryState()
         {
-            this._battery = 0;
+            _battery = 0;
         }
 
         public override void ClickOnOffButton()
@@ -24,7 +25,7 @@ namespace GerenciamentoDeBateria
         {
             ColoredText("\t[ SEM BATERIA ]\n");
             Console.WriteLine("Carregador conectado, vou carregar...");
-            this._notebook.TransitionTo(new ChargingState(this._battery));
+            _notebook.TransitionTo(new ChargingState(_battery));
         }
 
         public override void RemoveCharger()
@@ -37,7 +38,7 @@ namespace GerenciamentoDeBateria
         public override void CheckBattery()
         {
             ColoredText("\t[ SEM BATERIA ]\n");
-            Console.WriteLine($"Porcentagem de bateria: {this._battery}%");
+            Console.WriteLine($"Porcentagem de bateria: {_battery}%");
             return;
         }
 
